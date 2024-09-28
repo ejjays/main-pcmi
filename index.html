@@ -9,23 +9,23 @@
 </head>
 <body>
 
-    <iframe id="content-frame" src="about:blank"></iframe>
-
-    <div class="bottom-menu">
-        <a href="#" class="menu-item" onclick="loadPage('https://example.com', '100%', 'calc(100% - 50px)')"><i class="fas fa-home"></i></a>
-        <a href="#" class="menu-item" onclick="loadPage('https://example.com/call', '80%', 'calc(100% - 50px)')"><i class="fas fa-phone"></i></a>
-        <a href="#" class="menu-item" onclick="loadPage('https://pcmi.x10.mx', '100%', 'calc(108% - 100px)')"><i class="fas fa-comment"></i></a> <!-- Chat icon -->
-        <a href="#" class="menu-item" onclick="loadPage('https://example.com/settings', '90%', 'calc(100% - 50px)')"><i class="fas fa-cog"></i></a>
+    <div id="content-container">
+        <iframe id="content-frame" src="about:blank"></iframe>
+        <div id="loading" style="display: none;">Loading...</div>
     </div>
 
-    <script>
-        function loadPage(url, width, height) {
-            var iframe = document.getElementById('content-frame');
-            iframe.src = url;
-            iframe.style.width = width;
-            iframe.style.height = height;
-        }
-    </script>
+    <div class="bottom-menu" id="bottom-menu">
+        <a href="#" class="menu-item" aria-label="Home" onclick="loadPage('https://www.techtarget.com/whatis/definition/World-Wide-Web', '100%', 'calc(100% - 50px)', 0)" role="button" tabindex="0"><i class="fas fa-home" aria-hidden="true"></i></a>
+        <a href="#" class="menu-item" aria-label="Call" onclick="loadPage('https://example.com/call', '100%', 'calc(100% - 50px)', 1)" role="button" tabindex="0"><i class="fas fa-phone" aria-hidden="true"></i></a>
+        <a href="#" class="menu-item" aria-label="Chat" onclick="loadPage('https://pcmi.x10.mx', '100%', 'calc(110% - 110px)', 2)" role="button" tabindex="0"><i class="fas fa-comment" aria-hidden="true"></i></a>
+        <a href="#" class="menu-item" aria-label="Settings" onclick="loadPage('https://example.com/settings', '100%', 'calc(100% - 50px)', 3)" role="button" tabindex="0"><i class="fas fa-cog" aria-hidden="true"></i></a>
+    </div>
 
+    <button id="toggle-menu" aria-label="Toggle Menu" onclick="toggleMenu()">
+        <i class="fas fa-chevron-down" id="down-icon"></i>
+        <i class="fas fa-chevron-up" id="up-icon" style="display: none;"></i>
+    </button>
+
+    <script src="javascript.js"></script>
 </body>
 </html>
